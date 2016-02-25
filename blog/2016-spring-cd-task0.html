@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>2016 Spring CD Task0 - Kmolab</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<style type="text/css">
+
+/*some stuff for output/input prompts*/
+div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}div.cell.selected{border-radius:4px;border:thin #ababab solid}
+div.cell.edit_mode{border-radius:4px;border:thin #008000 solid}
+div.cell{width:100%;padding:5px 5px 5px 0;margin:0;outline:none}
+div.prompt{min-width:11ex;padding:.4em;margin:0;font-family:monospace;text-align:right;line-height:1.21429em}
+@media (max-width:480px){div.prompt{text-align:left}}div.inner_cell{display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1}
+div.input_area{border:1px solid #cfcfcf;border-radius:4px;background:#f7f7f7;line-height:1.21429em}
+div.prompt:empty{padding-top:0;padding-bottom:0}
+div.input{page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:horizontal;-moz-box-align:stretch;display:box;box-orient:horizontal;box-align:stretch;}
+div.inner_cell{width:90%;}
+div.input_area{border:1px solid #cfcfcf;border-radius:4px;background:#f7f7f7;}
+div.input_prompt{color:navy;border-top:1px solid transparent;}
+div.output_wrapper{margin-top:5px;position:relative;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}
+div.output_scroll{height:24em;width:100%;overflow:auto;border-radius:4px;-webkit-box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);-moz-box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);}
+div.output_collapsed{margin:0px;padding:0px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}
+div.out_prompt_overlay{height:100%;padding:0px 0.4em;position:absolute;border-radius:4px;}
+div.out_prompt_overlay:hover{-webkit-box-shadow:inset 0 0 1px #000000;-moz-box-shadow:inset 0 0 1px #000000;box-shadow:inset 0 0 1px #000000;background:rgba(240, 240, 240, 0.5);}
+div.output_prompt{color:darkred;}
+
+a.anchor-link:link{text-decoration:none;padding:0px 20px;visibility:hidden;}
+h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anchor-link,h5:hover .anchor-link,h6:hover .anchor-link{visibility:visible;}
+/* end stuff for output/input prompts*/
+
+
+.highlight-ipynb .hll { background-color: #ffffcc }
+.highlight-ipynb  { background: #f8f8f8; }
+.highlight-ipynb .c { color: #408080; font-style: italic } /* Comment */
+.highlight-ipynb .err { border: 1px solid #FF0000 } /* Error */
+.highlight-ipynb .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight-ipynb .o { color: #666666 } /* Operator */
+.highlight-ipynb .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight-ipynb .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight-ipynb .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight-ipynb .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight-ipynb .gd { color: #A00000 } /* Generic.Deleted */
+.highlight-ipynb .ge { font-style: italic } /* Generic.Emph */
+.highlight-ipynb .gr { color: #FF0000 } /* Generic.Error */
+.highlight-ipynb .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight-ipynb .gi { color: #00A000 } /* Generic.Inserted */
+.highlight-ipynb .go { color: #888888 } /* Generic.Output */
+.highlight-ipynb .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight-ipynb .gs { font-weight: bold } /* Generic.Strong */
+.highlight-ipynb .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight-ipynb .gt { color: #0044DD } /* Generic.Traceback */
+.highlight-ipynb .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight-ipynb .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight-ipynb .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight-ipynb .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight-ipynb .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight-ipynb .kt { color: #B00040 } /* Keyword.Type */
+.highlight-ipynb .m { color: #666666 } /* Literal.Number */
+.highlight-ipynb .s { color: #BA2121 } /* Literal.String */
+.highlight-ipynb .na { color: #7D9029 } /* Name.Attribute */
+.highlight-ipynb .nb { color: #008000 } /* Name.Builtin */
+.highlight-ipynb .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight-ipynb .no { color: #880000 } /* Name.Constant */
+.highlight-ipynb .nd { color: #AA22FF } /* Name.Decorator */
+.highlight-ipynb .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight-ipynb .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight-ipynb .nf { color: #0000FF } /* Name.Function */
+.highlight-ipynb .nl { color: #A0A000 } /* Name.Label */
+.highlight-ipynb .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight-ipynb .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight-ipynb .nv { color: #19177C } /* Name.Variable */
+.highlight-ipynb .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight-ipynb .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight-ipynb .mf { color: #666666 } /* Literal.Number.Float */
+.highlight-ipynb .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight-ipynb .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight-ipynb .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight-ipynb .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight-ipynb .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight-ipynb .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight-ipynb .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight-ipynb .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight-ipynb .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight-ipynb .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight-ipynb .sx { color: #008000 } /* Literal.String.Other */
+.highlight-ipynb .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight-ipynb .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight-ipynb .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight-ipynb .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight-ipynb .vc { color: #19177C } /* Name.Variable.Class */
+.highlight-ipynb .vg { color: #19177C } /* Name.Variable.Global */
+.highlight-ipynb .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight-ipynb .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+div.entry-content {
+  overflow: visible;
+  padding: 8px;
+}
+.input_area {
+  padding: 0.2em;
+}
+
+a.heading-anchor {
+ white-space: normal;
+}
+
+.rendered_html
+code {
+ font-size: .8em;
+}
+
+pre.ipynb {
+  color: black;
+  background: #f7f7f7;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding: 0;
+  margin: 0px;
+  font-size: 13px;
+}
+
+/* remove the prompt div from text cells */
+div.text_cell .prompt {
+    display: none;
+}
+
+/* remove horizontal padding from text cells, */
+/* so it aligns with outer body text */
+div.text_cell_render {
+    padding: 0.5em 0em;
+}
+
+img.anim_icon{padding:0; border:0; vertical-align:middle; -webkit-box-shadow:none; -box-shadow:none}
+</style>
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<link rel="canonical" href="http://chiamingyen.github.io/kmolab/blog/2016-spring-cd-task0.html">
+
+        <meta name="author" content="kmol" />
+        <meta name="keywords" content="2016 Spring,協同產品設計實習" />
+        <meta name="description" content="這個實習任務的目的, 在讓學員根據分組與電腦教室座位編排的問題, 進行思考, 如何以協同方式或流程, 有效完成任務" />
+
+        <meta property="og:site_name" content="Kmolab" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="2016 Spring CD Task0"/>
+        <meta property="og:url" content="http://chiamingyen.github.io/kmolab/blog/2016-spring-cd-task0.html"/>
+        <meta property="og:description" content="這個實習任務的目的, 在讓學員根據分組與電腦教室座位編排的問題, 進行思考, 如何以協同方式或流程, 有效完成任務"/>
+        <meta property="article:published_time" content="2016-02-23" />
+            <meta property="article:section" content="Courses" />
+            <meta property="article:tag" content="2016 Spring" />
+            <meta property="article:tag" content="協同產品設計實習" />
+            <meta property="article:author" content="kmol" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://chiamingyen.github.io/kmolab/blog/theme/css/bootstrap.united.min.css" type="text/css"/>
+    <link href="http://chiamingyen.github.io/kmolab/blog/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://chiamingyen.github.io/kmolab/blog/theme/css/pygments/fruity.css" rel="stylesheet">
+    <link href="http://chiamingyen.github.io/kmolab/blog/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://chiamingyen.github.io/kmolab/blog/theme/css/style.css" type="text/css"/>
+
+        <link href="http://chiamingyen.github.io/kmolab/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Kmolab ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://chiamingyen.github.io/kmolab/blog/" class="navbar-brand">
+Kmolab            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="http://chiamingyen.github.io/kmolab/blog/pages/about/">
+                             About
+                          </a></li>
+                        <li >
+                            <a href="http://chiamingyen.github.io/kmolab/blog/category/alumni.html">Alumni</a>
+                        </li>
+                        <li >
+                            <a href="http://chiamingyen.github.io/kmolab/blog/category/cadlab.html">Cadlab</a>
+                        </li>
+                        <li class="active">
+                            <a href="http://chiamingyen.github.io/kmolab/blog/category/courses.html">Courses</a>
+                        </li>
+                        <li >
+                            <a href="http://chiamingyen.github.io/kmolab/blog/category/project.html">Project</a>
+                        </li>
+                        <li >
+                            <a href="http://chiamingyen.github.io/kmolab/blog/category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="http://chiamingyen.github.io/kmolab/blog/category/ubuntu.html">Ubuntu</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="http://chiamingyen.github.io/kmolab/blog/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="http://chiamingyen.github.io/kmolab/blog/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://chiamingyen.github.io/kmolab/blog/2016-spring-cd-task0.html"
+                       rel="bookmark"
+                       title="Permalink to 2016 Spring CD Task0">
+                        2016 Spring CD Task0
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-23T18:18:27.496360+08:00"> 二 23 二月 2016</time>
+    </span>
+            <span class="label label-default">By</span>
+            <a href="http://chiamingyen.github.io/kmolab/blog/author/kmol.html"><i class="fa fa-user"></i> kmol</a>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://chiamingyen.github.io/kmolab/blog/tag/2016-spring.html">2016 Spring</a>
+        /
+	<a href="http://chiamingyen.github.io/kmolab/blog/tag/xie-tong-chan-pin-she-ji-shi-xi.html">協同產品設計實習</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>這個實習任務的目的, 在讓學員根據分組與電腦教室座位編排的問題, 進行思考, 如何以協同方式或流程, 有效完成任務</p>
+
+
+<p>學期伊始, 一如往常, 各班學員以每 6 人一組為原則, 在 Cadlab 電腦教室安排固定座位, 但是 2016 Spring 開始, 儘管允許學員自行編組, 但是同組學員卻希望故意錯開座位, 讓所有爾後各組的產品設計解題都能夠儘量透過資訊與通訊系統完成, 而且所有溝通流程與內容都能夠存在產品開發專案中.</p>
+<p>首先採用 <a href="https://ethercalc.tw/">https://ethercalc.tw/</a> 讓所有上課學員, 以即時同步模式, 填入分組資料, 若以 2a 班級為例, 分組資料中只填入學員學號, 則可以直接從瀏覽器畫面中複製分組資料, 放入 SciTE 中, 存為 2016_cd_2a_1.txt, 若利用 ethercalc 的 clipboard 格式轉檔, 可以存為 csv 格式, 存為 2016_cd_2a_2.txt, 且從學校開課前學員選課資料, 可得選課學員學號名單, 存為 2016_cd_2a_3.txt.</p>
+<p>Task0 的任務, 就是以各班協同分組後所取得的這 3 個檔案開始, 依據下列敘述, 完成各班的 Cadlab 電腦教室座位表, 讓每一位學員都能夠知道所被分配的學期固定座位, 並在爾後上課依序入座.</p>
+<p>任務描述:</p>
+<ol>
+<li>每組以 6 人為原則, 至少 4 人, 至多 7 人</li>
+<li>各組學員, 以學號遞增排序後, 排序第1者為組長, 負責代表該組與其他組進行溝通</li>
+<li>各組的班級分組序號, 則依據各組組長的學號, 再進行各組比序, 以遞增方式排列, 排序第1者為第1組, 其餘依序定下各組序號組別</li>
+<li>Cadlab 電腦教室的配置為每列 9 排, 共有 7 列, 因此若每人一台電腦排座位, 可以容納 63 名學員</li>
+<li>固定座位命名方式, 以面對講台的最右邊為第1排, 以最靠近講台者為第1列</li>
+<li>一旦各組依照學員學號排序定組序後, 第1組的第1名同學, 從第1排第1列開始固定座位, 接著排第二組的第1位同學, 排在第1排的第2列座位, 然後將第三組的第1位同學, 排在第1排的第3列座位, 依此類推</li>
+<li>座位安排中, 第1排排至第七列後, 則接著排在第2排的第1列座位上, 且各組若不及 7 位學員時, 則該座位由下一組的順位同學遞補</li>
+<li>完成座位編排後, 必須能夠轉為網頁格式, 放入各組的協同倉儲所對應的 gh-pages 網頁或 OpenShift 網頁中</li>
+</ol>
+<p>可能的任務變化:</p>
+<ol>
+<li>與上述編排座位的問題類似, 在產品開發過程中, 許多設計參數可能因為特定協同團隊的意見而變更</li>
+<li>上述座位編排問題, 可能從學號遞增排序, 改為遞減排序或亂數排序</li>
+<li>可能從原先的以排 (column) 為主 (也就是先排第1排, 之後排第2排), 改為以列 (row) 為主 (也就是先排第1列, 之後排第2列)</li>
+<li>假如電腦教室的配置更動, 從 9 排 7 列改為其他不同配置時, 整個座位安排流程, 就必須因應改變</li>
+<li>換言之, 假如上述問題並非採用電腦運算的方法完成, 而以人工或類比的方式進行, 不僅耗費時間, 容易出錯, 而且一旦相關原則變更, 都將重新勞師動眾一番</li>
+</ol>
+<p>技術回顧:</p>
+<p>針對上述問題, 若希望利用 Python3 進行解題, 需要運用下列相關函式、方法或模組:</p>
+<p>with open ... as</p>
+<p><a href="http://openhome.cc/Gossip/Python/WithAs.html">http://openhome.cc/Gossip/Python/WithAs.html</a></p>
+<p>readlines</p>
+<p><a href="https://docs.python.org/3.4/tutorial/inputoutput.html">https://docs.python.org/3.4/tutorial/inputoutput.html</a></p>
+<p>for ... in range</p>
+<p><a href="https://docs.python.org/3.4/tutorial/controlflow.html?highlight=loop#for-statements">https://docs.python.org/3.4/tutorial/controlflow.html?highlight=loop#for-statements</a></p>
+<p>len</p>
+<p><a href="https://docs.python.org/3.4/library/functions.html?#len">https://docs.python.org/3.4/library/functions.html?#len</a></p>
+<p>append</p>
+<p><a href="https://docs.python.org/3.4/tutorial/datastructures.html">https://docs.python.org/3.4/tutorial/datastructures.html</a></p>
+<p>split</p>
+<p><a href="https://docs.python.org/3.4/library/stdtypes.html#str.split">https://docs.python.org/3.4/library/stdtypes.html#str.split</a></p>
+<p>list</p>
+<p><a href="https://docs.python.org/3.4/library/functions.html#func-list">https://docs.python.org/3.4/library/functions.html#func-list</a></p>
+<p>sorted</p>
+<p><a href="https://docs.python.org/3.4/library/functions.html#sorted">https://docs.python.org/3.4/library/functions.html#sorted</a></p>
+<p>filter</p>
+<p><a href="https://docs.python.org/3.4/library/functions.html#filter">https://docs.python.org/3.4/library/functions.html#filter</a></p>
+<p>None, True, not</p>
+<p><a href="https://docs.python.org/3.4/c-api/none.html">https://docs.python.org/3.4/c-api/none.html</a></p>
+<p><a href="https://docs.python.org/3.4/library/constants.html#True">https://docs.python.org/3.4/library/constants.html#True</a></p>
+<p><a href="https://docs.python.org/3.4/reference/expressions.html#not">https://docs.python.org/3.4/reference/expressions.html#not</a></p>
+<p>str</p>
+<p><a href="https://docs.python.org/3.4/library/functions.html#func-str">https://docs.python.org/3.4/library/functions.html#func-str</a></p>
+<p>print</p>
+<p><a href="https://docs.python.org/3.4/library/functions.html#print">https://docs.python.org/3.4/library/functions.html#print</a></p>
+<p>g.es</p>
+<p><a href="http://leoeditor.com/tutorial-scripting.html">http://leoeditor.com/tutorial-scripting.html</a></p>
+<p>zip_longest</p>
+<p><a href="https://docs.python.org/3.4/library/itertools.html#itertools.zip_longest">https://docs.python.org/3.4/library/itertools.html#itertools.zip_longest</a></p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'kmolab'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = '2016-spring-cd-task0';
+                var disqus_url = 'http://chiamingyen.github.io/kmolab/blog/2016-spring-cd-task0.html';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/2016-spring-collaborative-product-design-course.html">
+                            2016 Spring Collaborative Product Design Course
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/about-lektor-content-management-system.html">
+                            About Lektor Content Management System
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/create-an-online-ethercalc-site.html">
+                            Create an online Ethercalc site
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/2016-cd-course.html">
+                            2016 CD course
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/2015-fall-cadp-w16.html">
+                            2015 Fall CADP W16
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="list-group-item"><a href="http://chiamingyen.github.io/kmolab/blog/categories.html"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Categories</span></h4></a>
+                <ul class="list-group" id="categories">
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/category/alumni.html">
+                            <i class="fa fa-folder-open fa-lg"></i> Alumni
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/category/cadlab.html">
+                            <i class="fa fa-folder-open fa-lg"></i> CADlab
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/category/courses.html">
+                            <i class="fa fa-folder-open fa-lg"></i> Courses
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/category/project.html">
+                            <i class="fa fa-folder-open fa-lg"></i> Project
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/category/python.html">
+                            <i class="fa fa-folder-open fa-lg"></i> Python
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://chiamingyen.github.io/kmolab/blog/category/ubuntu.html">
+                            <i class="fa fa-folder-open fa-lg"></i> Ubuntu
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="list-group-item"><a href="http://chiamingyen.github.io/kmolab/blog/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                </ul>
+            </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://github.com/DandyDev/pelican-bootstrap3/" target="_blank">
+                pelican-bootstrap3
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://github.com/getpelican/pelican-plugins" target="_blank">
+                pelican-plugins
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://github.com/Tipue/Tipue-Search" target="_blank">
+                Tipue search
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 kmol
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://chiamingyen.github.io/kmolab/blog/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://chiamingyen.github.io/kmolab/blog/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://chiamingyen.github.io/kmolab/blog/theme/js/respond.min.js"></script>
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'kmolab'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+
+</body>
+</html>
